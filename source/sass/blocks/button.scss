@@ -1,0 +1,17 @@
+.button {
+  display: block;
+  padding: 10px 40px;
+  margin: 0 auto;
+
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  color: $white;
+
+  background-color: $blue;
+  border-radius: 3px;
+
+  &--disabled {
+    background-color: $light-blue;
+  }
+}

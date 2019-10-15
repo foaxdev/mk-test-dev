@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>MK</title>
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+    <section class="register">
+        <a class="button register__button" href="#">Регистрация</a>
+    </section>
+    <section class="modal modal--step-1">
+        <div class="modal__header-wrap">
+            <h2 class="modal__header">Регистрация</h2>
+            <button class="modal__close-button" type="button">Закрыть окно</button>
+        </div>
+        <form class="modal__form" method="post" action="#" enctype="text/plain" autocomplete="off">
+            <label class="modal__label" for="email">E-mail</label>
+            <input class="modal__input" type="email" name="email" id="email" required>
+            <label class="modal__label" for="nickname">Никнейм</label>
+            <input class="modal__input" type="text" name="nickname" id="nickname" required>
+            <label class="modal__label" for="password">Пароль</label>
+            <input class="modal__input" type="password" name="password" id="password" required>
+            <div class="errors">
+                <b class="errors__note">Пароль должен содержать:</b>
+                <span class="errors__name">от 6 до 32 символов</span>
+                <span class="errors__name errors__name--error">цифру</span>
+                <span class="errors__name errors__name--success">заглавную и строчкую буквы</span>
+                <span class="errors__title">Пароль не должен совпадать с Никнеймом</span>
+            </div>
+            <label class="modal__label modal__label--password-repeat" for="password-repeat">Пароль ещё раз</label>
+            <input class="modal__input modal__input--error" type="password" name="password-repeat" id="password-repeat" required>
+            <div class="errors">
+                <span class="errors__title">Введённые пароли не совпадают</span>
+            </div>
+            <div class="modal__agreement-wrap">
+              <label class="modal__label modal__label--agreement" for="agreement">Я принимаю условия&nbsp;<a class="modal__label modal__label--agreement" href="#">Пользовательского соглашения</a></label>
+              <input class="modal__input" type="checkbox" name="agreement" id="agreement" required>
+            </div>
+            <button class="modal__button button button--disabled" type="submit">Зарегистрироваться</button>
+        </form>
+    </section>
+
+    <script src="js/constants.js"></script>
+    <script src="js/modal.js"></script>
+</body>
+</html>

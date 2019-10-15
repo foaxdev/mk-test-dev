@@ -1,0 +1,138 @@
+.modal {
+  position: fixed;
+  z-index: 1;
+
+  display: none;
+
+  &--show {
+    display: flex;
+    animation: bounce 0.6s;
+  }
+
+  &--step-1 {
+    left: calc(50% - 480px/2 + 1px);
+    top: calc(50% - 700px/2 - 24px);
+
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px;
+    width: 480px;
+    height: 700px;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    background-color: $white;
+  }
+}
+
+.modal__form {
+  width: 100%;
+}
+
+.modal__header-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.modal__header {
+  margin: 0;
+
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 400;
+}
+
+.modal__close-button {
+  @include hide-text();
+  width: 19px;
+  height: 19px;
+
+  background-image: url("../img/close-button.svg");
+  background-repeat: no-repeat;
+  background-size: 19px;
+  background-color: transparent;
+  border: none;
+
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    opacity: 0.6;
+    outline: none;
+  }
+
+  &:active {
+    opacity: 0.3;
+    outline: none;
+  }
+}
+
+.modal__label {
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 30px;
+
+  font-size: 14px;
+  line-height: 16px;
+
+  &--password-repeat {
+    margin-top: 12px;
+  }
+
+  &--agreement {
+    display: flex;
+    margin-top: 0;
+
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+
+    a {
+      color: $light-blue;
+    }
+
+    &:first-child {
+      padding-left: 5px;
+    }
+  }
+}
+
+.modal__agreement-wrap {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  margin-top: 15px;
+
+  & input {
+    width: auto;
+    height: auto;
+  }
+}
+
+.modal__input {
+  width: 100%;
+  height: 40px;
+  padding: 10px 20px;
+
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400;
+
+  border: 1px solid $light-grey;
+
+  &--error {
+    border-color: $red;
+  }
+
+  &:hover,
+  &:focus {
+    border: 1px solid $light-blue;
+    outline: none;
+  }
+}
+
+.modal__button {
+  margin-top: 20px;
+}
