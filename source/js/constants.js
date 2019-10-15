@@ -3,7 +3,8 @@
 (function () {
   const Key = {
     ENTER: 'Enter',
-    ESCAPE: 'Escape'
+    ESCAPE: 'Escape',
+    SPACEBAR: ' '
   };
 
   window.constants = {

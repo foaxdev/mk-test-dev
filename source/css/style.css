@@ -458,8 +458,16 @@ input[type="radio"].visually-hidden {
   color: #FFFFFF;
   background-color: #558CB7;
   border-radius: 3px; }
+  .button:hover:not(.button--disabled) {
+    -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); }
+  .button:focus:not(.button--disabled) {
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.4); }
   .button--disabled {
     background-color: #82B3D9; }
+  .button:hover, .button:focus, .button:active {
+    outline: none; }
 
 .modal {
   position: fixed;
@@ -516,18 +524,18 @@ input[type="radio"].visually-hidden {
   color: transparent;
   width: 19px;
   height: 19px;
-  background-image: url("../img/close-button.svg");
-  background-repeat: no-repeat;
-  background-size: 19px;
   background-color: transparent;
   border: none;
   cursor: pointer; }
-  .modal__close-button:hover, .modal__close-button:focus {
-    opacity: 0.6;
+  .modal__close-button:hover, .modal__close-button:focus, .modal__close-button:active {
     outline: none; }
-  .modal__close-button:active {
-    opacity: 0.3;
-    outline: none; }
+  .modal__close-button svg {
+    fill: #777777; }
+  .modal__close-button:hover svg,
+  .modal__close-button:focus svg {
+    fill: #558CB7; }
+  .modal__close-button:active svg {
+    opacity: 0.6; }
 
 .modal__label {
   display: block;
@@ -547,6 +555,11 @@ input[type="radio"].visually-hidden {
     line-height: 14px; }
     .modal__label--agreement a {
       color: #82B3D9; }
+      .modal__label--agreement a:hover, .modal__label--agreement a:focus {
+        text-decoration: underline;
+        outline: none; }
+      .modal__label--agreement a:active {
+        outline: none; }
     .modal__label--agreement:first-child {
       padding-left: 5px; }
 
@@ -561,10 +574,36 @@ input[type="radio"].visually-hidden {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  margin-top: 15px; }
-  .modal__agreement-wrap input {
-    width: auto;
-    height: auto; }
+  margin-top: 15px;
+  margin-left: 20px; }
+
+.modal__checkbox:hover, .modal__checkbox:focus, .modal__checkbox:active {
+  outline: none; }
+
+.modal__checkbox:hover span::before,
+.modal__checkbox:focus span::before {
+  border-color: #558CB7; }
+
+.modal__checkbox-indicator {
+  position: relative;
+  cursor: pointer; }
+  .modal__checkbox-indicator::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -20px;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #777777;
+    border-radius: 3px; }
+  .modal__checkbox-indicator--selected::before {
+    background-image: url("../img/tick.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 12px;
+    border: none; }
+  .modal__checkbox-indicator:hover, .modal__checkbox-indicator:focus, .modal__checkbox-indicator:active {
+    outline: none; }
 
 .modal__input {
   width: 100%;

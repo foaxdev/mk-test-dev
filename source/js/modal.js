@@ -3,9 +3,11 @@
 (function () {
   let elModalStepOne = document.querySelector('.modal--step-1');
   let elRegisterButton = document.querySelector('.register__button');
+  let elCloseButton = document.querySelector('.modal__close-button');
 
   let hideModal = function () {
     elModalStepOne.classList.remove('modal--show');
+    elCloseButton.removeEventListener('click', hideModal);
   };
 
   let hideModalByKeyHandler = function (evt) {
@@ -18,6 +20,8 @@
   let showModal = function (modalWindow) {
     modalWindow.classList.add('modal--show');
     document.addEventListener('keydown', hideModalByKeyHandler);
+    elCloseButton.addEventListener('click', hideModal);
+    window.checkbox.setCheckboxes();
   };
 
   let openModalByClickHandler = function () {

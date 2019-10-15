@@ -49,23 +49,28 @@
   width: 19px;
   height: 19px;
 
-  background-image: url("../img/close-button.svg");
-  background-repeat: no-repeat;
-  background-size: 19px;
   background-color: transparent;
   border: none;
 
   cursor: pointer;
 
   &:hover,
-  &:focus {
-    opacity: 0.6;
+  &:focus,
+  &:active {
     outline: none;
   }
 
-  &:active {
-    opacity: 0.3;
-    outline: none;
+  & svg {
+    fill: $brown-grey;
+  }
+
+  &:hover svg,
+  &:focus svg {
+    fill: $blue;
+  }
+
+  &:active svg {
+    opacity: 0.6;
   }
 }
 
@@ -91,6 +96,16 @@
 
     a {
       color: $light-blue;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+        outline: none;
+      }
+
+      &:active {
+        outline: none;
+      }
     }
 
     &:first-child {
@@ -104,10 +119,54 @@
   flex-direction: row-reverse;
   justify-content: flex-end;
   margin-top: 15px;
+  margin-left: 20px;
+}
 
-  & input {
-    width: auto;
-    height: auto;
+.modal__checkbox {
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+  }
+
+  &:hover span::before,
+  &:focus span::before {
+    border-color: $blue;
+  }
+}
+
+.modal__checkbox-indicator {
+  position: relative;
+
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -20px;
+
+    width: 12px;
+    height: 12px;
+
+    border: 2px solid $brown-grey;
+    border-radius: 3px;
+  }
+
+  &--selected {
+    &::before {
+      background-image: url("../img/tick.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 12px;
+      border: none;
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
   }
 }
 
