@@ -5,6 +5,8 @@
   let elRegisterButton = document.querySelector('.register__button');
   let elCloseButton = document.querySelector('.modal__close-button');
 
+  let elNicknameInput = document.querySelector('#nickname');
+
   let hideModal = function () {
     elModalStepOne.classList.remove('modal--show');
     elCloseButton.removeEventListener('click', hideModal);
@@ -34,8 +36,13 @@
     }
   };
 
+  let nicknameListenersHandler = function () {
+
+  };
+
   hideModal();
 
   elRegisterButton.addEventListener('click', openModalByClickHandler);
   elRegisterButton.addEventListener('keydown', openModalByKeyHandler);
+  elNicknameInput.addEventListener('keydown', nicknameListenersHandler);
 })();
