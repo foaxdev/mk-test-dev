@@ -8,6 +8,7 @@
   let elCloseButton = document.querySelector('.modal__close-button');
 
   let elNicknameInput = document.querySelector('#nickname');
+  let elEmailInput = document.querySelector('#email');
 
   let hideModal = function () {
     elModalStepOne.classList.remove('modal--show');
@@ -39,10 +40,12 @@
   };
 
   let nicknameListenersHandler = window.debounce(window.validation.checkNameHandler, INTERVAL);
+  let  emailListenersHandler = window.debounce(window.validation.checkEmailHandler, INTERVAL);
 
   hideModal();
 
   elRegisterButton.addEventListener('click', openModalByClickHandler);
   elRegisterButton.addEventListener('keydown', openModalByKeyHandler);
   elNicknameInput.addEventListener('keyup', nicknameListenersHandler);
+  elEmailInput.addEventListener('keyup', emailListenersHandler);
 })();
