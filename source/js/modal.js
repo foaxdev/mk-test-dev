@@ -1,6 +1,8 @@
 'use strict';
 
 (function () {
+  const INTERVAL = 1000;
+
   let elModalStepOne = document.querySelector('.modal--step-1');
   let elRegisterButton = document.querySelector('.register__button');
   let elCloseButton = document.querySelector('.modal__close-button');
@@ -36,13 +38,11 @@
     }
   };
 
-  let nicknameListenersHandler = function () {
-
-  };
+  let nicknameListenersHandler = window.debounce(window.validation.checkNameHandler, INTERVAL);
 
   hideModal();
 
   elRegisterButton.addEventListener('click', openModalByClickHandler);
   elRegisterButton.addEventListener('keydown', openModalByKeyHandler);
-  elNicknameInput.addEventListener('keydown', nicknameListenersHandler);
+  elNicknameInput.addEventListener('keyup', nicknameListenersHandler);
 })();

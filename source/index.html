@@ -21,6 +21,7 @@
             <input class="modal__input" type="email" name="email" id="email" required>
             <label class="modal__label" for="nickname">Никнейм</label>
             <input class="modal__input" type="text" name="nickname" id="nickname" required>
+            <span class="errors__title error__title-nick"></span>
             <label class="modal__label" for="password">Пароль</label>
             <input class="modal__input" type="password" name="password" id="password" required>
             <div class="errors">
@@ -31,7 +32,7 @@
                 <span class="errors__title">Пароль не должен совпадать с Никнеймом</span>
             </div>
             <label class="modal__label modal__label--password-repeat" for="password-repeat">Пароль ещё раз</label>
-            <input class="modal__input modal__input--error" type="password" name="password-repeat" id="password-repeat" required>
+            <input class="modal__input" type="password" name="password-repeat" id="password-repeat" required>
             <div class="errors">
                 <span class="errors__title">Введённые пароли не совпадают</span>
             </div>
@@ -48,8 +49,8 @@
 
     <script src="js/constants.js"></script>
     <script src="js/debounce.js"></script>
-    <script src="js/modal.js"></script>
     <script src="js/validation.js"></script>
+    <script src="js/modal.js"></script>
     <script src="js/checkbox.js"></script>
 </body>
 </html>

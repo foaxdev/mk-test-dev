@@ -1,17 +1,24 @@
 'use strict';
 
 (function () {
+  var INTERVAL = 100;
+
   let addListenersForCheckboxes = function (checkboxes) {
     checkboxes.forEach(function (checkbox) {
-      checkbox.addEventListener('keydown', window.debounce(function (evt) {
-        if (evt.key === window.constants.Key.SPACEBAR) {
-          evt.preventDefault();
+      checkbox.addEventListener('keydown', window.debounce(
+        function (evt) {
+          if (evt.key === window.constants.Key.SPACEBAR) {
+            evt.preventDefault();
+            changeCheckbox(checkbox, checkbox.querySelector('input'), checkbox.querySelector('.modal__checkbox-indicator'));
+          }
+        },
+        INTERVAL));
+      checkbox.addEventListener('click', window.debounce(
+        function () {
           changeCheckbox(checkbox, checkbox.querySelector('input'), checkbox.querySelector('.modal__checkbox-indicator'));
-        }
-      }));
-      checkbox.addEventListener('click', window.debounce(function () {
-        changeCheckbox(checkbox, checkbox.querySelector('input'), checkbox.querySelector('.modal__checkbox-indicator'));
-      }));
+        },
+        INTERVAL
+      ));
     });
   };
 

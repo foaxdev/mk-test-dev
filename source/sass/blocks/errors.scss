@@ -62,11 +62,15 @@
 }
 
 .errors__title {
-  padding-top: 4px;
+  display: none;
 
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
 
   color: $red;
+
+  &--show {
+    display: inline;
+  }
 }
