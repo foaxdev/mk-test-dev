@@ -46,6 +46,8 @@
 
 .modal__close-button {
   @include hide-text();
+  position: relative;
+
   width: 19px;
   height: 19px;
 
@@ -61,6 +63,7 @@
   }
 
   & svg {
+    position: absolute;
     fill: $brown-grey;
   }
 
@@ -123,6 +126,8 @@
 }
 
 .modal__checkbox {
+  position: relative;
+
   &:hover,
   &:focus,
   &:active {
@@ -143,7 +148,6 @@
   &::before {
     content: "";
     position: absolute;
-    top: 0;
     left: -20px;
 
     width: 12px;
@@ -196,5 +200,5 @@
 }
 
 .modal__button {
-  margin-top: 20px;
+  margin: 20px auto 0 auto;
 }

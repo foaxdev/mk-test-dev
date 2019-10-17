@@ -451,12 +451,12 @@ input[type="radio"].visually-hidden {
 .button {
   display: block;
   padding: 10px 40px;
-  margin: 0 auto;
   font-size: 14px;
   line-height: 16px;
   text-align: center;
   color: #FFFFFF;
   background-color: #558CB7;
+  border: none;
   border-radius: 3px; }
   .button:hover, .button:hover {
     -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
@@ -530,6 +530,7 @@ input[type="radio"].visually-hidden {
   font-size: 0;
   line-height: 0;
   color: transparent;
+  position: relative;
   width: 19px;
   height: 19px;
   background-color: transparent;
@@ -538,6 +539,7 @@ input[type="radio"].visually-hidden {
   .modal__close-button:hover, .modal__close-button:focus, .modal__close-button:active {
     outline: none; }
   .modal__close-button svg {
+    position: absolute;
     fill: #777777; }
   .modal__close-button:hover svg,
   .modal__close-button:focus svg {
@@ -585,12 +587,13 @@ input[type="radio"].visually-hidden {
   margin-top: 15px;
   margin-left: 20px; }
 
-.modal__checkbox:hover, .modal__checkbox:focus, .modal__checkbox:active {
-  outline: none; }
-
-.modal__checkbox:hover span::before,
-.modal__checkbox:focus span::before {
-  border-color: #558CB7; }
+.modal__checkbox {
+  position: relative; }
+  .modal__checkbox:hover, .modal__checkbox:focus, .modal__checkbox:active {
+    outline: none; }
+  .modal__checkbox:hover span::before,
+  .modal__checkbox:focus span::before {
+    border-color: #558CB7; }
 
 .modal__checkbox-indicator {
   position: relative;
@@ -598,7 +601,6 @@ input[type="radio"].visually-hidden {
   .modal__checkbox-indicator::before {
     content: "";
     position: absolute;
-    top: 0;
     left: -20px;
     width: 12px;
     height: 12px;
@@ -629,7 +631,7 @@ input[type="radio"].visually-hidden {
     border-color: #9F2B11; }
 
 .modal__button {
-  margin-top: 20px; }
+  margin: 20px auto 0 auto; }
 
 .errors {
   display: -webkit-box;

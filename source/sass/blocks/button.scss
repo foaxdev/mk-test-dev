@@ -1,7 +1,6 @@
 .button {
   display: block;
   padding: 10px 40px;
-  margin: 0 auto;
 
   font-size: 14px;
   line-height: 16px;
@@ -9,6 +8,7 @@
   color: $white;
 
   background-color: $blue;
+  border: none;
   border-radius: 3px;
 
   &:hover,
