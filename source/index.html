@@ -7,7 +7,8 @@
 </head>
 <body>
     <section class="register">
-        <a class="button register__button" href="#">Регистрация</a>
+      <h1 class="visually-hidden">Регистрация</h1>
+      <a class="button register__button" href="#">Регистрация</a>
     </section>
     <section class="modal modal--step-1">
         <div class="modal__header-wrap">
@@ -19,10 +20,10 @@
         <form class="modal__form" method="post" action="#" enctype="text/plain" autocomplete="off">
             <label class="modal__label" for="email">E-mail</label>
             <input class="modal__input" type="email" name="email" id="email" required>
-            <span class="errors__title error__title-email"></span>
+            <span class="error-title error-title-email"></span>
             <label class="modal__label" for="nickname">Никнейм</label>
             <input class="modal__input" type="text" name="nickname" id="nickname" required>
-            <span class="errors__title error__title-nick"></span>
+            <span class="error-title error-title-nick"></span>
             <label class="modal__label" for="password">Пароль</label>
             <input class="modal__input" type="password" name="password" id="password" required>
             <div class="errors">
@@ -30,12 +31,12 @@
                 <span class="errors__name errors__name--chars">от 6 до 32 символов</span>
                 <span class="errors__name errors__name--numbers">цифру</span>
                 <span class="errors__name errors__name--case">заглавную и строчную буквы</span>
-                <span class="errors__title error__title-password">Пароль не должен совпадать с Никнеймом</span>
+                <span class="errors__title errors__title-password">Пароль не должен совпадать с Никнеймом</span>
             </div>
             <label class="modal__label modal__label--password-repeat" for="password-repeat">Пароль ещё раз</label>
             <input class="modal__input" type="password" id="password-repeat" required>
             <div class="errors">
-                <span class="errors__title error__title-repeat">Введённые пароли не совпадают</span>
+                <span class="errors__title errors__title-repeat">Введённые пароли не совпадают</span>
             </div>
             <div class="modal__agreement-wrap">
               <div class="modal__checkbox" role="checkbox" aria-checked="false" tabindex="0">

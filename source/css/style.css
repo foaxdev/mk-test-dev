@@ -499,7 +499,7 @@ input[type="radio"].visually-hidden {
             align-items: flex-start;
     padding: 40px;
     width: 480px;
-    height: 700px;
+    min-height: 700px;
     -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 3px;
@@ -686,11 +686,11 @@ input[type="radio"].visually-hidden {
       background-image: url("../img/correct.svg");
       border-color: #007B1B; }
 
-.errors__title {
+.error-title {
   display: none;
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
   color: #9F2B11; }
-  .errors__title--show {
+  .error-title--show {
     display: inline; }

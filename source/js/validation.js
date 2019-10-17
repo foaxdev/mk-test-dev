@@ -7,10 +7,10 @@
   let elPasswordRepeatInput = document.querySelector('#password-repeat');
   let elCheckboxInput = document.querySelector('.modal__checkbox-input');
 
-  let elNicknameError = document.querySelector('.error__title-nick');
-  let elEmailError = document.querySelector('.error__title-email');
-  let elPasswordError = document.querySelector('.error__title-password');
-  let elPasswordRepeatError = document.querySelector('.error__title-repeat');
+  let elNicknameError = document.querySelector('.error-title-nick');
+  let elEmailError = document.querySelector('.error-title-email');
+  let elPasswordError = document.querySelector('.error-title-password');
+  let elPasswordRepeatError = document.querySelector('.error-title-repeat');
   let elPasswordCharsError = document.querySelector('.errors__name--chars');
   let elPasswordNumbersError = document.querySelector('.errors__name--numbers');
   let elPasswordCaseError = document.querySelector('.errors__name--case');
@@ -92,7 +92,7 @@
 
   let checkPasswordWithEmailAndNickName = function () {
     elPasswordInput.classList.toggle('modal__input--error', isPasswordEqualToEmailOrNickname());
-    elPasswordError.classList.toggle('errors__title--show', isPasswordEqualToEmailOrNickname());
+    elPasswordError.classList.toggle('error-title--show', isPasswordEqualToEmailOrNickname());
   };
 
   let doPasswordsMatch = function () {
@@ -134,7 +134,7 @@
       }
 
       elNicknameInput.classList.toggle('modal__input--error', message !== '');
-      elNicknameError.classList.toggle('errors__title--show', message !== '');
+      elNicknameError.classList.toggle('error-title--show', message !== '');
       elNicknameError.innerText = message;
 
       checkPasswordWithEmailAndNickName();
@@ -148,7 +148,7 @@
       }
 
       elEmailInput.classList.toggle('modal__input--error', message !== '');
-      elEmailError.classList.toggle('errors__title--show', message !== '');
+      elEmailError.classList.toggle('error-title--show', message !== '');
       elEmailError.innerText = message;
 
       checkPasswordWithEmailAndNickName();
@@ -190,7 +190,7 @@
     checkPasswordRepeatHandler: function () {
       if (!isPasswordEmpty() && !isPasswordRepeatEmpty()) {
         elPasswordRepeatInput.classList.toggle('modal__input--error', !doPasswordsMatch());
-        elPasswordRepeatError.classList.toggle('errors__title--show', !doPasswordsMatch());
+        elPasswordRepeatError.classList.toggle('error-title--show', !doPasswordsMatch());
       }
       window.validation.checkAllValues();
     },
