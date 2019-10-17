@@ -182,14 +182,16 @@
 
   border: 1px solid $light-grey;
 
-  &--error {
-    border-color: $red;
-  }
-
   &:hover,
   &:focus {
     border: 1px solid $light-blue;
     outline: none;
+  }
+
+  &--error,
+  &--error:hover,
+  &--error:focus {
+    border-color: $red;
   }
 }
 

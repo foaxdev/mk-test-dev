@@ -9,6 +9,7 @@
 
   let elNicknameInput = document.querySelector('#nickname');
   let elEmailInput = document.querySelector('#email');
+  let elPasswordInput = document.querySelector('#password');
 
   let hideModal = function () {
     elModalStepOne.classList.remove('modal--show');
@@ -40,7 +41,8 @@
   };
 
   let nicknameListenersHandler = window.debounce(window.validation.checkNameHandler, INTERVAL);
-  let  emailListenersHandler = window.debounce(window.validation.checkEmailHandler, INTERVAL);
+  let emailListenersHandler = window.debounce(window.validation.checkEmailHandler, INTERVAL);
+  let passwordListenersHandler = window.debounce(window.validation.checkPasswordHandler, INTERVAL);
 
   hideModal();
 
@@ -48,4 +50,5 @@
   elRegisterButton.addEventListener('keydown', openModalByKeyHandler);
   elNicknameInput.addEventListener('keyup', nicknameListenersHandler);
   elEmailInput.addEventListener('keyup', emailListenersHandler);
+  elPasswordInput.addEventListener('keyup', passwordListenersHandler);
 })();
