@@ -33,15 +33,15 @@
                 <span class="errors__title error__title-password">Пароль не должен совпадать с Никнеймом</span>
             </div>
             <label class="modal__label modal__label--password-repeat" for="password-repeat">Пароль ещё раз</label>
-            <input class="modal__input" type="password" name="password-repeat" id="password-repeat" required>
+            <input class="modal__input" type="password" id="password-repeat" required>
             <div class="errors">
-                <span class="errors__title">Введённые пароли не совпадают</span>
+                <span class="errors__title error__title-repeat">Введённые пароли не совпадают</span>
             </div>
             <div class="modal__agreement-wrap">
               <div class="modal__checkbox" role="checkbox" aria-checked="false" tabindex="0">
                 <span class="modal__checkbox-indicator"></span>
                 <label class="modal__label modal__label--agreement" for="agreement">Я принимаю условия&nbsp;<a class="modal__label modal__label--agreement" href="#">Пользовательского соглашения</a></label>
-                <input class="visually-hidden" type="checkbox" name="agreement" id="agreement" tabindex="-1" required>
+                <input class="modal__checkbox-input visually-hidden" type="checkbox" id="agreement" tabindex="-1" required>
               </div>
             </div>
             <button class="modal__button button button--disabled" type="submit">Зарегистрироваться</button>
@@ -49,8 +49,9 @@
     </section>
 
     <script src="js/constants.js"></script>
-    <script src="js/debounce.js"></script>
     <script src="js/validation.js"></script>
+    <script src="js/debounce.js"></script>
+    <script src="js/data.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/checkbox.js"></script>
 </body>

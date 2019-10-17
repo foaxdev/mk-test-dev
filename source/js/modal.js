@@ -2,6 +2,7 @@
 
 (function () {
   const INTERVAL = 1000;
+  const SHORT_INTERVAL = 200;
 
   let elModalStepOne = document.querySelector('.modal--step-1');
   let elRegisterButton = document.querySelector('.register__button');
@@ -10,6 +11,8 @@
   let elNicknameInput = document.querySelector('#nickname');
   let elEmailInput = document.querySelector('#email');
   let elPasswordInput = document.querySelector('#password');
+  let elPasswordRepeatInput = document.querySelector('#password-repeat');
+  let elCheckboxInput = document.querySelector('.modal__checkbox');
 
   let hideModal = function () {
     elModalStepOne.classList.remove('modal--show');
@@ -43,6 +46,8 @@
   let nicknameListenersHandler = window.debounce(window.validation.checkNameHandler, INTERVAL);
   let emailListenersHandler = window.debounce(window.validation.checkEmailHandler, INTERVAL);
   let passwordListenersHandler = window.debounce(window.validation.checkPasswordHandler, INTERVAL);
+  let passwordRepeatListenersHandler = window.debounce(window.validation.checkPasswordRepeatHandler, INTERVAL);
+  let checkboxHandler = window.debounce(window.validation.checkAllValues, SHORT_INTERVAL);
 
   hideModal();
 
@@ -51,4 +56,17 @@
   elNicknameInput.addEventListener('keyup', nicknameListenersHandler);
   elEmailInput.addEventListener('keyup', emailListenersHandler);
   elPasswordInput.addEventListener('keyup', passwordListenersHandler);
+  elPasswordRepeatInput.addEventListener('keyup', passwordRepeatListenersHandler);
+  elModalStepOne.addEventListener('submit', window.validation.checkFormHandler);
+  elCheckboxInput.addEventListener('click', checkboxHandler);
+
+  window.modal = {
+    send: function () {
+      window.data.getData();
+      hideModal();
+      elRegisterButton.classList.add('button--green');
+      elRegisterButton.removeEventListener('click', openModalByClickHandler);
+      elRegisterButton.removeEventListener('keydown', openModalByKeyHandler);
+    }
+  };
 })();

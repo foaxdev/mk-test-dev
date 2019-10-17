@@ -4,13 +4,23 @@
   let elNicknameInput = document.querySelector('#nickname');
   let elEmailInput = document.querySelector('#email');
   let elPasswordInput = document.querySelector('#password');
+  let elPasswordRepeatInput = document.querySelector('#password-repeat');
+  let elCheckboxInput = document.querySelector('.modal__checkbox-input');
 
   let elNicknameError = document.querySelector('.error__title-nick');
   let elEmailError = document.querySelector('.error__title-email');
   let elPasswordError = document.querySelector('.error__title-password');
+  let elPasswordRepeatError = document.querySelector('.error__title-repeat');
   let elPasswordCharsError = document.querySelector('.errors__name--chars');
   let elPasswordNumbersError = document.querySelector('.errors__name--numbers');
   let elPasswordCaseError = document.querySelector('.errors__name--case');
+  let elsInputs = document.querySelectorAll('.modal__input');
+  let elsPasswordChecks = document.querySelectorAll('.errors__name');
+  let elModalButton = document.querySelector('.modal__button');
+
+  let isPasswordDigitsCheckPassed = false;
+  let isPasswordLengthCheckPassed = false;
+  let isPasswordCharsCheckPassed = false;
 
   let isNicknameLengthCorrect = function () {
     return (elNicknameInput.value.length > 0 && elNicknameInput.value.length < 3) || elNicknameInput.value > 40;
@@ -47,7 +57,7 @@
   };
 
   let isPasswordLengthCorrect = function () {
-    return elPasswordInput.value.length < 6 || elPasswordInput.value > 32;
+    return !(elPasswordInput.value.length < 6 || elPasswordInput.value.length > 32);
   };
 
   let isNickNameEmpty = function () {
@@ -56,6 +66,14 @@
 
   let isEmailEmpty = function () {
     return elEmailInput.value.length === 0;
+  };
+
+  let isPasswordEmpty = function () {
+    return elPasswordInput.value.length === 0;
+  };
+
+  let isPasswordRepeatEmpty = function () {
+    return elPasswordRepeatInput.value.length === 0;
   };
 
   let isPasswordEqualToEmailOrNickname = function () {
@@ -73,8 +91,30 @@
   };
 
   let checkPasswordWithEmailAndNickName = function () {
-    elPasswordInput.classList.toggle('modal__input--error', !doesPasswordContainDigit() || !doesPasswordContainLowercaseAndUppercaseChar() || isPasswordLengthCorrect() || isPasswordEqualToEmailOrNickname());
+    elPasswordInput.classList.toggle('modal__input--error', isPasswordEqualToEmailOrNickname());
     elPasswordError.classList.toggle('errors__title--show', isPasswordEqualToEmailOrNickname());
+  };
+
+  let doPasswordsMatch = function () {
+    return elPasswordInput.value === elPasswordRepeatInput.value;
+  };
+
+  let doAllInputsHaveNoErrors = function () {
+    for (let i = 0; i < elsInputs.length; i++) {
+      if (elsInputs[i].classList.contains('modal__input--error')) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  let isPasswordPassed = function () {
+    for (let i = 0; i < elsPasswordChecks.length; i++) {
+      if (!elsPasswordChecks[i].classList.contains('errors__name--success')) {
+        return false;
+      }
+    }
+    return true;
   };
 
   window.validation = {
@@ -98,6 +138,7 @@
       elNicknameError.innerText = message;
 
       checkPasswordWithEmailAndNickName();
+      window.validation.checkAllValues();
     },
     checkEmailHandler: function () {
       let message = '';
@@ -111,18 +152,88 @@
       elEmailError.innerText = message;
 
       checkPasswordWithEmailAndNickName();
+      window.validation.checkAllValues();
     },
     checkPasswordHandler: function () {
-      elPasswordNumbersError.classList.toggle('errors__name--error', !doesPasswordContainDigit());
-      elPasswordNumbersError.classList.toggle('errors__name--success', doesPasswordContainDigit());
+      if (doesPasswordContainDigit()) {
+        isPasswordDigitsCheckPassed = true;
+      }
+      if (doesPasswordContainLowercaseAndUppercaseChar()) {
+        isPasswordCharsCheckPassed = true;
+      }
+      if (isPasswordLengthCorrect()) {
+        isPasswordLengthCheckPassed = true;
+      }
 
-      elPasswordCaseError.classList.toggle('errors__name--error', !doesPasswordContainLowercaseAndUppercaseChar());
-      elPasswordCaseError.classList.toggle('errors__name--success', doesPasswordContainLowercaseAndUppercaseChar());
+      if (isPasswordDigitsCheckPassed) {
+        elPasswordNumbersError.classList.toggle('errors__name--error', !doesPasswordContainDigit());
+        elPasswordNumbersError.classList.toggle('errors__name--success', doesPasswordContainDigit());
+        elPasswordInput.classList.toggle('modal__input--error', !doesPasswordContainDigit());
+      }
 
-      elPasswordCharsError.classList.toggle('errors__name--error', isPasswordLengthCorrect());
-      elPasswordCharsError.classList.toggle('errors__name--success', !isPasswordLengthCorrect());
+      if (isPasswordCharsCheckPassed) {
+        elPasswordCaseError.classList.toggle('errors__name--error', !doesPasswordContainLowercaseAndUppercaseChar());
+        elPasswordCaseError.classList.toggle('errors__name--success', doesPasswordContainLowercaseAndUppercaseChar());
+        elPasswordInput.classList.toggle('modal__input--error', !doesPasswordContainLowercaseAndUppercaseChar());
+      }
+
+      if (isPasswordLengthCheckPassed) {
+        elPasswordCharsError.classList.toggle('errors__name--error', !isPasswordLengthCorrect());
+        elPasswordCharsError.classList.toggle('errors__name--success', isPasswordLengthCorrect());
+        elPasswordInput.classList.toggle('modal__input--error', !isPasswordLengthCorrect());
+      }
 
       checkPasswordWithEmailAndNickName();
+      window.validation.checkPasswordRepeatHandler();
+      window.validation.checkAllValues();
+    },
+    checkPasswordRepeatHandler: function () {
+      if (!isPasswordEmpty() && !isPasswordRepeatEmpty()) {
+        elPasswordRepeatInput.classList.toggle('modal__input--error', !doPasswordsMatch());
+        elPasswordRepeatError.classList.toggle('errors__title--show', !doPasswordsMatch());
+      }
+      window.validation.checkAllValues();
+    },
+    checkAllValues: function () {
+      if (
+        doAllInputsHaveNoErrors()
+        &&
+        !isNickNameEmpty()
+        &&
+        !isEmailEmpty()
+        &&
+        !isPasswordEmpty()
+        &&
+        !isPasswordRepeatEmpty()
+        &&
+        elCheckboxInput.checked
+        &&
+        isPasswordPassed()
+      ) {
+        elModalButton.classList.remove('button--disabled');
+      } else {
+        elModalButton.classList.add('button--disabled');
+      }
+    },
+    checkFormHandler: function (evt) {
+      evt.preventDefault();
+      if (
+        doAllInputsHaveNoErrors()
+        &&
+        !isNickNameEmpty()
+        &&
+        !isEmailEmpty()
+        &&
+        !isPasswordEmpty()
+        &&
+        !isPasswordRepeatEmpty()
+        &&
+        elCheckboxInput.checked
+        &&
+        isPasswordPassed()
+      ) {
+        window.modal.send();
+      }
     }
   };
 })();
