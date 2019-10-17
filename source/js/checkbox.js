@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  var INTERVAL = 100;
+  const INTERVAL = 100;
 
   let addListenersForCheckboxes = function (checkboxes) {
     checkboxes.forEach(function (checkbox) {
